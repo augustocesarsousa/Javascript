@@ -1,8 +1,8 @@
  // Example of comment in line
 
- // console.log("Hello Word!")
-
-console.log("Hello Word!")
+ console.log("Hello Word!");
+ 
+ // console.log("Hello Word!");
 
 /*
 *
