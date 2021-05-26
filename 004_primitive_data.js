@@ -1,16 +1,17 @@
-const name1 = 'João'; // String
-const name2 = "José"; // String
-const name3 = `Maria`; // String
-const number1 = 10; // number
-const number2 = 10.5; // number
+const NAME1 = 'João'; // String
+const NAME2 = "José"; // String
+const NAME3 = `Maria`; // String
+const NUMBER1 = 10; // number
+const NUMBER2 = 10.5; // number
 let name4; // undefined -> doesn't point to anything in memory
-const name5 = null; // null -> doesn't point to anything in memory
-const aprovedd = true; // boolean
+const NAME5 = null; // null -> doesn't point to anything in memory
+const APROVEDD = true; // boolean
 
-console.log(typeof name1, name1);
-console.log(typeof name2, name2);
-console.log(typeof name3, name3);
-console.log(typeof number1, number1);
-console.log(typeof number2, number2);
-console.log(typeof name5, name5);
-console.log(typeof aprovedd, aprovedd);
+console.log(typeof NAME1, NAME1);
+console.log(typeof NAME2, NAME2);
+console.log(typeof NAME3, NAME3);
+console.log(typeof NUMBER1, NUMBER1);
+console.log(typeof NUMBER2, NUMBER2);
+console.log(typeof name4, name4);
+console.log(typeof NAME5, NAME5);
+console.log(typeof APROVEDD, APROVEDD);
