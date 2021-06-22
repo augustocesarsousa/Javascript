@@ -30,7 +30,7 @@ console.log(`Product:`);
 console.log(shirt1);
 
 shirt1.increase(10);
-console.log(`Product with increase:`);
+console.log(`Product with increase 10,00`);
 console.log(shirt1);
 
 // overwriting father's increase method
@@ -39,5 +39,5 @@ Shirt.prototype.increase = function(percentage){
 }
 
 shirt1.increase(50);
-console.log(`Product with percent increase:`);
+console.log(`Product with increase 50%:`);
 console.log(shirt1);
