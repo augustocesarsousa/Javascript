@@ -1,0 +1,7 @@
+npm init -y = initialaze npm in project
+npm install package = install package in project (npm install express)
+npm install package --save-dev = install package in project in developer mode
+npm install package --save-prod = install package in project in production mode
+npm install package@version = install specific version of package (npm install express@2.1.0)
+npm update = update all packages of project
+npm unistall package = uninstall package in project (npm uninstall express)
