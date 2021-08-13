@@ -5,10 +5,26 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">          
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>          
+        <ul class="navbar-nav"> 
+
+          <% if(user){ %>
+            <li class="nav-item">
+              <a class="nav-link">
+                User: <%- user.email %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Create contact</a>
+            </li>          
+            <li class="nav-item">
+              <a class="nav-link" href="/login/logout">Logout</a>
+            </li>         
+          <% }else{ %>
+            <li class="nav-item">
+              <a class="nav-link" href="/login/index">Login</a>
+            </li>
+          <% } %> 
+          
         </ul>        
       </div>
     </div>
