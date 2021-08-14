@@ -18,9 +18,8 @@ exports.register = async (req, res) => {
         }
     
         req.flash('success', 'User created successfully!');
-            req.session.save(function(){
-                return res.redirect('index');
-            });
+        req.session.save(() => res.redirect('index'));
+        return;
     }catch(e){
         console.log(e);
         return res.render('404');
