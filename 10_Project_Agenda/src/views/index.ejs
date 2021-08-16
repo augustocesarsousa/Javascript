@@ -14,12 +14,16 @@
 
         <div class="responsive-table">
             <table class="table my-3">
-                <tr>
-                    <td>Augusto</td>
-                    <td>Sousa</td>
-                    <td>123456789</td>
-                    <td>augusto@email.com</td>
-                </tr>                
+                <% contacts.forEach(contact => { %>
+                    <tr>
+                        <td><%= contact.first_name %></td>
+                        <td><%= contact.last_name %></td>
+                        <td><%= contact.phone %></td>
+                        <td><%= contact.email %></td>
+                        <td><a href="/contact/index/<%= contact._id %>">Edit</a></td>
+                        <td><a class="text-danger" href="/contact/delete/<%= contact._id %>">Delete</a></td>
+                    </tr> 
+                <% }); %>               
             </table>
         </div>
 

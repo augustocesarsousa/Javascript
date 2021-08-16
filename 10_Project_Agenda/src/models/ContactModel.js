@@ -48,6 +48,26 @@ class Contact{
             phone: this.body.phone
         }
     }
+
+    static async findById(id){
+        if(typeof id !== 'string') return;
+        const contact = await ContactModel.findById(id);
+        return contact;
+    }
+
+    static async findContacts(){
+        const contact = await ContactModel.find().sort({name: 1});
+        return contact;
+    }
+
+    async edit(id){
+        if(typeof id !== 'string') return;
+        
+        this.validate();
+        if(this.errors.length > 0) return;
+
+        this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true });
+    }
     
 }
 
