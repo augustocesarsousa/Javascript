@@ -16,31 +16,35 @@
 
             <div class="col-lg">
                 <h4>Create your account</h4>
-                <form action="/login/register" method="POST">
+                <form class="form-register" action="/login/register" method="POST">
                     <input type="hidden" name="_csrf" value="<%= csrfToken%>">
                     <div class="form-group">
                       <label>Email address</label>
                       <input type="email" class="form-control" name="email">
+                      <p class="email-msg alert-danger"></p>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" class="form-control" name="password">
-                      </div>
+                        <p class="password-msg alert-danger"></p>
+                    </div>
                     <button type="submit" class="btn btn-primary my-2">Create account</button>
                 </form>
             </div>
 
             <div class="col-lg">
                 <h4>Login</h4>
-                <form action="/login/login" method="POST">
+                <form class="form-login" action="/login/login" method="POST">
                     <input type="hidden" name="_csrf" value="<%= csrfToken%>">
                     <div class="form-group">
-                      <label>Email address</label>
-                      <input type="email" class="form-control" name="email">
+                        <label>Email address</label>
+                        <input type="email" class="form-control" name="email">
+                        <p class="email-msg alert-danger"></p>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" class="form-control" name="password">
+                        <p class="password-msg  alert-danger"></p>
                       </div>
                     <button type="submit" class="btn btn-primary my-2">Enter</button>
                 </form>
