@@ -4,7 +4,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.CONNECTIONSTRING,{useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.CONNECTIONSTRING,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+    })
     .then(() => {
         app.emit('connected');
     })
@@ -21,7 +26,7 @@ const csrf = require('csurf');
 const myMiddleware = require('./src/middlewares/middleware');
 
 app.use(helmet());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 const sessionOptions = session({

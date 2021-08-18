@@ -56,7 +56,7 @@ class Contact{
     }
 
     static async findContacts(){
-        const contact = await ContactModel.find().sort({name: 1});
+        const contact = await ContactModel.find().sort({first_name: 1});
         return contact;
     }
 
@@ -67,6 +67,12 @@ class Contact{
         if(this.errors.length > 0) return;
 
         this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true });
+    }
+
+    static async delete(id){
+        if(typeof id !== 'string') return;
+        const contact = await ContactModel.findOneAndDelete({_id: id});
+        return contact;
     }
     
 }
