@@ -52,6 +52,8 @@ export default class Login {
             return;
         }
 
+        if(!error) el.submit();
+
     }
 
 }
