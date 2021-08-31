@@ -4,7 +4,8 @@ class User {
   async create(req, res) {
     try {
       const newUser = await UserModel.create(req.body);
-      return res.json(newUser);
+      const { id, name, email } = newUser;
+      return res.json({ id, name, email });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -14,7 +15,7 @@ class User {
 
   async index(req, res) {
     try {
-      const users = await UserModel.findAll();
+      const users = await UserModel.findAll( { attributes: ['id', 'name', 'email'] });
       return res.json(users);
     } catch (e) {
       return res.json(null);
@@ -24,7 +25,9 @@ class User {
   async show(req, res) {
     try {
       const user = await UserModel.findByPk(req.params.id);
-      return res.json(user);
+
+      const { id, name, email } = user;
+      return res.json({ id, name, email });
     } catch (e) {
       return res.json(null);
     }
@@ -32,13 +35,7 @@ class User {
 
   async update(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['ID not send!'],
-        });
-      }
-
-      const user = await UserModel.findByPk(req.params.id);
+      const user = await UserModel.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
@@ -46,9 +43,11 @@ class User {
         });
       }
 
-      const newDatas = await user.update(req.body);
+      const newData = await user.update(req.body);
 
-      return res.json(newDatas);
+      const { id, name, email } = newData;
+      
+      return res.json({ id, name, email });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -58,15 +57,9 @@ class User {
 
   async delete(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['ID not send!'],
-        });
-      }
+      const user = await UserModel.findByPk(req.userId);
 
-      const user = await UserModel.findByPk(req.params.id);
-
-      if (!req.params.id) {
+      if (!user) {
         return res.status(400).json({
           errors: ['User does not exists!'],
         });
