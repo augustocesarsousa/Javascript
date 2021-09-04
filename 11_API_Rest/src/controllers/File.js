@@ -14,13 +14,19 @@ class File {
         });
       }
 
-      const { originalname, filename } = req.file;
-      const original_name = originalname;
-      const file_name = filename;
-      const { student_id } = req.body;
-      const photo = await Photo.create({ original_name, file_name, student_id });
+      try {
+        const { originalname, filename } = req.file;
+        const original_name = originalname;
+        const file_name = filename;
+        const { student_id } = req.body;
+        const photo = await Photo.create({ original_name, file_name, student_id });
 
-      return res.json(photo);
+        return res.json(photo);
+      } catch (e) {
+        return res.status(400).json({
+          errors: ['Student does not exists!'],
+        });
+      }
     });
   }
 }

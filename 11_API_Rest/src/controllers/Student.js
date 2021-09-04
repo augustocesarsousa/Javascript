@@ -1,11 +1,16 @@
+import Photo from '../models/Photo';
 import StudentModel from '../models/Student';
 
 class Student {
   async index(req, res) {
-    const student = await StudentModel.findAll();
-    // const { id, name, email } = student;
+    const student = await StudentModel.findAll({
+      attributes: ['id', 'name', 'surname', 'email', 'age', 'weight', 'height'],
+      include: {
+        model: Photo,
+        attributes: ['url', 'file_name'],
+      },
+    });
 
-    // return res.json({ id, name, email });
     return res.json(student);
   }
 
@@ -17,7 +22,13 @@ class Student {
         });
       }
 
-      const student = await StudentModel.findByPk(req.params.id);
+      const student = await StudentModel.findByPk(req.params.id, {
+        attributes: ['id', 'name', 'surname', 'email', 'age', 'weight', 'height'],
+        include: {
+          model: Photo,
+          attributes: ['url', 'file_name'],
+        },
+      });
 
       if (!student) {
         return res.status(401).json({
@@ -25,9 +36,7 @@ class Student {
         });
       }
 
-      const { id, name, email } = student;
-
-      return res.json({ id, name, email });
+      return res.json(student);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
