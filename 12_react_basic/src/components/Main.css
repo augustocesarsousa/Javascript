@@ -38,3 +38,41 @@
   align-items: center;
   justify-content: center;
 }
+
+.tasks {
+  margin-top: 30px;
+}
+
+.tasks li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  transition: all 600ms;
+}
+
+.tasks li:hover{
+  background-color: #51c5de;
+}
+
+.tasks li .edit{
+  margin-right: 15px;
+  color: #51c5de;
+}
+
+.tasks li .delete{
+  margin-right: 15px;
+  color: #f04c64;
+}
+
+.tasks li:hover .edit,
+.tasks li:hover .delete {
+  color: #000;
+  transition: all 600ms;
+}
+
+.tasks li .edit,
+.tasks li .delete {
+  cursor: pointer;
+}
+
