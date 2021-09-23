@@ -12,6 +12,7 @@ export default class Main extends Component {
   state = {
     newTesk: '',
     tasks: [],
+    index: -1,
   };
 
   handleChance = (e) => {
@@ -22,20 +23,37 @@ export default class Main extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { tasks } = this.state;
+    const { tasks, index } = this.state;
     let { newTesk } = this.state;
     newTesk = newTesk.trim();
 
     if (tasks.indexOf(newTesk) !== -1) return;
 
-    const newTesks = [...tasks];
+    const newTasks = [...tasks];
 
-    this.setState({
-      tasks: [...newTesks, newTesk],
-    });
+    if (index === -1) {
+      this.setState({
+        tasks: [...newTasks, newTesk],
+        newTesk: '',
+      });
+    } else {
+      newTasks[index] = newTesk;
+
+      this.setState({
+        tasks: [...newTasks],
+        newTesk: '',
+        index: -1,
+      });
+    }
   }
 
   handleEdit = (e, index) => {
+    const { tasks } = this.state;
+
+    this.setState({
+      index,
+      newTesk: tasks[index],
+    });
   }
 
   handleDelete = (e, index) => {
