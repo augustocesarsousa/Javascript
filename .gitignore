@@ -1,4 +1,23 @@
-08_Tooling_ES6_Molules/053_babel/node_modules
-08_Tooling_ES6_Molules/054_webpack/node_modules
-08_Tooling_ES6_Molules/055_import_export/node_modules
-08_Tooling_ES6_Molules/056_cpf_creator/node_modules
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
